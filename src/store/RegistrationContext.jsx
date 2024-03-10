@@ -4,8 +4,9 @@ import { createContext } from "react";
 export const Context = createContext({
   loggedIn: false,
   data: [],
-  onSubmit: ()=>{},
-  onLogin:()=>{},
+  onSubmit: () => {},
+  onLogin: () => {},
+  onClose: () => {},
 });
 
 export default function RegistrationContext({ children }) {
@@ -17,8 +18,20 @@ export default function RegistrationContext({ children }) {
     loggedIn(true);
   }
 
-  function handleLogin(dataObj) {
+  function handleLogin({firstName, lastName, email, password}) {
+   
     // check if user exists in data set
+    setData(prev => {
+        return [
+            ...prev,
+            {
+                firstName:firstName,
+                lastName:lastName,
+                email:email,
+                password:password,
+            }
+        ]
+    })
 
     loggedIn(true);
   }
@@ -27,11 +40,16 @@ export default function RegistrationContext({ children }) {
     setLoggedIn(bool);
   }
 
+  function handleClose() {
+    setLoggedIn(!loggedIn);
+  }
+
   const ctxValue = {
     loggedIn: loggedIn,
     data: data,
     onSubmit: handleSubmit,
     onLogin: handleLogin,
+    onClose: handleClose,
   };
   return (
     <>

@@ -1,19 +1,20 @@
-export const  DUMMY = [
-    {firstname: "Mukut",
-lastname: "Das",
-email: "mukutdas@gmail.com",
-password: "123456",
-},
-    {firstname: "Mukut",
-lastname: "Das",
-email: "mukutdas@gmail.com",
-password: "123456",
-},
-    {firstname: "Mukut",
-lastname: "Das",
-email: "mukutdas@gmail.com",
-password: "123456",
-},
-
-]
-
+export const DUMMY = [
+  {
+    firstName: "Mukut",
+    lastName: "Das",
+    email: "mukutdas@gmail.com",
+    password: "123456",
+  },
+  {
+    firstName: "Mukut",
+    lastName: "Das",
+    email: "mukutdas@gmail.com",
+    password: "123456",
+  },
+  {
+    firstName: "Mukut",
+    lastName: "Das",
+    email: "mukutdas@gmail.com",
+    password: "123456",
+  },
+];

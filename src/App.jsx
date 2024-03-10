@@ -24,7 +24,7 @@ export default function App() {
               <>
                 <Login />
                 <div>
-                  <p>Don't have an account</p>
+                  <p>Login your account or Create One...</p>
                   <button
                     onClick={() => {
                       handleClick();
@@ -46,7 +46,7 @@ export default function App() {
             )}
           </div>
         )}
-        {true && (
+        {loggedIn && (
           <>
             <UsersTable />
           </>

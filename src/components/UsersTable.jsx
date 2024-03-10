@@ -1,8 +1,9 @@
 import { useContext } from "react";
+import { DUMMY } from "../data/data";
 import { Context } from "../store/RegistrationContext";
 
 export default function UsersTable() {
-  const { data } = useContext(Context);
+  const { data, onClose } = useContext(Context);
   return (
     <>
       <tabel>
@@ -13,14 +14,21 @@ export default function UsersTable() {
           <th>Password</th>
         </thead>
         <tbody>
-          <tr>
-            <td>Mukut</td>
-            <td>Das</td>
-            <td>mukut@gmail</td>
-            <td>Mukut123</td>
-          </tr>
+          {data.map((item) => {
+            return (
+              <tr>
+                <td>{item.firstname}</td>
+                <td>{item.lastname}</td>
+                <td>{item.email}</td>
+                <td>{item.password}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </tabel>
+      <div>
+        <button onClick={onClose}>Close</button>
+      </div>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 export const Context = createContext({
   loggedIn: false,
+  error: false,
   data: [],
   onSubmit: () => {},
   onLogin: () => {},
@@ -12,13 +13,24 @@ export const Context = createContext({
 export default function RegistrationContext({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(dataObj) {
-    setData();
-    loggedIn(true);
+  function handleLogin(email,password) {
+    const updated = data.find(item => {return item.email === email});
+    if(updated){
+      if(updated.password !== password){
+        setError(true);
+      }
+      else {
+        loggedIn(true);
+      }
+    }
+    else{
+      setError(true);
+    }
   }
 
-  function handleLogin({firstName, lastName, email, password}) {
+  function handleSubmit(firstName, lastName, email, password) {
    
     // check if user exists in data set
     setData(prev => {
@@ -45,6 +57,7 @@ export default function RegistrationContext({ children }) {
   }
 
   const ctxValue = {
+    error: error,
     loggedIn: loggedIn,
     data: data,
     onSubmit: handleSubmit,

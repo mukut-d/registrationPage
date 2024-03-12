@@ -28,6 +28,10 @@ export default function RegistrationContext({ children }) {
     } else {
       setError({ err: "email", error: true });
     }
+
+    if(err.error === false){
+      ifLogin(true);
+    }
   }
 
   function handleSubmit(firstName, lastName, email, password) {
@@ -44,8 +48,10 @@ export default function RegistrationContext({ children }) {
       ];
     });
 
-    loggedIn(true);
+    ifLogin(true);
   }
+
+  console.log(data);
 
   function ifLogin(bool) {
     setLoggedIn(bool);

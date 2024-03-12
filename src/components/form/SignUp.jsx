@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
+import Input from "../Input";
 
 export default function SignUp() {
   const [data, setData] = useState({});
@@ -27,22 +28,10 @@ export default function SignUp() {
       >
         <section className="blue">
           <h1>Sign Up !</h1>
-          <div>
-            <label>First Name</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label>Email</label>
-            <input type="email" required />
-          </div>
-          <div>
-            <label>Password</label>
-            <input type="password" required />
-          </div>
+          <Input label={"First Name"} type={"text"} id={"firstName"} />
+          <Input label={"Last Name"} type={"text"} id={"lastName"} />
+          <Input label={"Email"} type={"email"} id={"email"} required/>
+          <Input label={"Password"} type={"password"} id={"password"} required/>
           <div>
             <button>Signup</button>
             <button type="reset">Reset</button>

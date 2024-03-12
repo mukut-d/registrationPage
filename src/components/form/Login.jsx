@@ -1,49 +1,68 @@
 import { useContext } from "react";
-import { useRef } from "react";
+import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
 import Input from "../Input";
 
 export default function Login() {
-  const { onLogin } = useContext(Context);
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const { onLogin, error } = useContext(Context);
+  const [loginObj, setLoginObj] = useState({});
+  let errEmail = false;
+  let errPwd = false;
 
-  function handleSubmit(event, emailRef, passwordRef) {
+  function handleChange(id, value) {
+    setLoginObj((prev) => {
+      return { ...prev, [id]: value };
+    });
+  }
+  console.log(loginObj);
+
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
     console.log("submitted");
 
-    console.log("email-", email);
-    console.log("password-", password);
-    onLogin(email, password);
-    handleReset(emailRef, passwordRef);
+
+
     event.target.reset();
+    onLogin(loginObj);
+  }
+  if (error.email) {
+    if (error.error) errEmail = true;
+  } else if (error.password) {
+    if (error.error) {
+      errPwd = true;
+    }
   }
 
   return (
     <>
       <form
         onSubmit={() => {
-          handleSubmit(event, emailRef, passwordRef);
+          handleSubmit(event);
         }}
       >
         <section className="dark">
           <h1>Login !</h1>
           <div id="inputCard">
             <p>
-              <Input label="Email" id="email" type="email" name="email" />
+              <Input
+                label="Email"
+                id="email"
+                type="email"
+                name="email"
+                error={errEmail}
+                onChange={handleChange}
+              />
             </p>
             <p>
               <Input
+                error={errPwd}
                 label="Password"
                 id="password"
                 type="password"
                 name="password"
                 minLength={6}
                 required
+                onChange={handleChange}
               />
             </p>
 

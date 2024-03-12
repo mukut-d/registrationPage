@@ -1,19 +1,24 @@
-import { useContext } from "react"
-import { Context } from "../store/RegistrationContext"
+import { useState } from "react";
 
-export default function Input({label,id,...props}){
-    const {error} = useContext(Context);
-    // error variable is conditionally border color ko change karna hai!
-    return <>
-    <div>
+export default function Input({
+  label,
+  id,
+  error = false,
+  onChange,
+  ...props
+}) {
+  return (
+    <>
+      <div style={{ border: error ? "2px solid red" : null }}>
         <label htmlFor="email">{label}</label>
-        <input 
-        id={id}
-        {...props}
+        <input
+          id={id}
+          {...props}
+          onChange={() => {
+            onChange(id, event.target.value);
+          }}
         />
-        <div>
-            {error && <p>{error}</p>}
-        </div>
-    </div>
+      </div>
     </>
+  );
 }

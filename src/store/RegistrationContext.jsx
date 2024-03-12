@@ -13,37 +13,36 @@ export const Context = createContext({
 export default function RegistrationContext({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({});
 
-  function handleLogin(email,password) {
-    const updated = data.find(item => {return item.email === email});
-    if(updated){
-      if(updated.password !== password){
-        setError(true);
-      }
-      else {
+  function handleLogin(loginObj) {
+    const updated = data.find((item) => {
+      return item.email === loginObj.email;
+    });
+    if (updated) {
+      if (updated.password !== loginObj.password) {
+        setError({ err: "pwd", error: true });
+      } else {
         loggedIn(true);
       }
-    }
-    else{
-      setError(true);
+    } else {
+      setError({ err: "email", error: true });
     }
   }
 
   function handleSubmit(firstName, lastName, email, password) {
-   
     // check if user exists in data set
-    setData(prev => {
-        return [
-            ...prev,
-            {
-                firstName:firstName,
-                lastName:lastName,
-                email:email,
-                password:password,
-            }
-        ]
-    })
+    setData((prev) => {
+      return [
+        ...prev,
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        },
+      ];
+    });
 
     loggedIn(true);
   }

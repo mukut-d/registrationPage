@@ -17,7 +17,7 @@ export default function Form() {
       {isLogin && (
         <>
           <Login />
-          <div>
+          <div id="login">
             <p>Login your account or Create One...</p>
             <button
               onClick={() => {
@@ -32,7 +32,7 @@ export default function Form() {
       {!isLogin && (
         <>
           <SignUp />
-          <div>
+          <div id="acc">
             <p>Already have an account...</p>
             <button onClick={() => handleClick("login")}>Login</button>
           </div>

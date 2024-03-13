@@ -106,3 +106,17 @@ section {
 .wave .shape-fill {
   fill: hsl(240, 3%, 6%);
 }
+
+#acc {
+  position: relative;
+  padding-left: 47rem;
+  z-index: 1;
+}
+
+#login {
+  padding-left: 47rem;
+}
+
+.signup {
+  padding-bottom: 12rem;
+}

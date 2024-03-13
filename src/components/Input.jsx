@@ -10,7 +10,7 @@ export default function Input({
   return (
     <>
       <div style={{ border: error ? "2px solid red" : null }}>
-        <label htmlFor="email">{label}</label>
+        <label htmlFor={id}>{label}</label>
         <input
           id={id}
           {...props}

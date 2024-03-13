@@ -29,23 +29,15 @@ export default function RegistrationContext({ children }) {
       setError({ err: "email", error: true });
     }
 
-    if(err.error === false){
+    if (err.error === false) {
       ifLogin(true);
     }
   }
 
-  function handleSubmit(firstName, lastName, email, password) {
+  function handleSubmit(data) {
     // check if user exists in data set
     setData((prev) => {
-      return [
-        ...prev,
-        {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-        },
-      ];
+      return [...prev, { ...data }];
     });
 
     ifLogin(true);

@@ -4,7 +4,6 @@ import { Context } from "../../store/RegistrationContext";
 import Input from "../Input";
 
 export default function SignUp() {
-  const [data, setData] = useState({});
   const { onSubmit } = useContext(Context);
   const [signup, setSignUp] = useState({});
 
@@ -13,65 +12,62 @@ export default function SignUp() {
       return { ...prev, [id]: value };
     });
   }
-  console.log(signup);
-  function handleSubmit(event) {
+  function handleSubmit(event) {  
     event.preventDefault();
     // first validate data here...
 
-    setData((prev) => {
-      return {
-        ...prev,
-        [identifier]: identifier,
-      };
-    });
-    onSubmit(data);
+    onSubmit(signup);
   }
   return (
     <>
-      <form
-        onSubmit={() => {
-          handleSubmit(event);
-        }}
-      >
-        <section className="blue">
-          <h1>Sign Up !</h1>
-          <Input
-            label={"First Name"}
-            type={"text"}
-            id={"firstName"}
-            onChange={handleChange}
-          />
-          <Input
-            label={"Last Name"}
-            type={"text"}
-            id={"lastName"}
-            onChange={handleChange}
-            name={"lastName"}
-          />
-          <Input
-            label={"Email"}
-            type={"email"}
-            id={"email"}
-            name={"email"}
-            required
-            onChange={handleChange}
-          />
-          <Input
-            label={"Password"}
-            type={"password"}
-            id={"password"}
-            name={"password"}
-            minLength={6}
-            required
-            onChange={handleChange}
-          />
-          <div>
-            <button>Signup</button>
-            <button type="reset">Reset</button>
-          </div>
-          <div className="curve"></div>
-        </section>
-      </form>
+      <div className="blue">
+        <form
+          onSubmit={() => {
+            handleSubmit(event);
+          }}
+        >
+          <section className="signup">
+            <h1>Sign Up !</h1>
+
+            <Input
+              label="First Name"
+              type="text"
+              id="firstName"
+              name="firstName"
+              onChange={handleChange}
+            />
+            <Input
+              label="Last Name"
+              type="text"
+              id="lastName"
+              name="lastName"
+              onChange={handleChange}
+            />
+            <Input
+              label="Email"
+              type="email"
+              id="email"
+              name="email"
+              required
+              onChange={handleChange}
+            />
+            <Input
+              label="Password"
+              type="password"
+              id="password"
+              name="password"
+              minLength={6}
+              required
+              onChange={handleChange}
+            />
+            <div>
+              <button onClick={handleSubmit}>Signup</button>
+              <button type="reset">Reset</button>
+            </div>
+            <div className="curve"></div>
+          </section>
+        </form>
+      </div>
     </>
   );
 }

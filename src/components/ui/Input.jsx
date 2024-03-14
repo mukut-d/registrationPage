@@ -9,15 +9,13 @@ export default function Input({
   ...props
 }) {
   const idInput = idClass ? idClass : id;
+
   return (
     <>
-      <div
-        style={{ border: error ? "2px solid red" : null }}
-        className="Input"
-        id={idInput}
-      >
+      <div className="Input" id={idInput}>
         <label htmlFor={id}>{label}</label>
         <input
+          style={{ border: error ? "2px solid red" : null }}
           id={id}
           {...props}
           onChange={() => {

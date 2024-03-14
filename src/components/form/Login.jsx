@@ -23,9 +23,9 @@ export default function Login() {
     event.target.reset();
     onLogin(loginObj);
   }
-  if (error.email) {
+  if (error.err === "emai;") {
     if (error.error) errEmail = true;
-  } else if (error.password) {
+  } else if (error.err === "pwd") {
     if (error.error) {
       errPwd = true;
     }
@@ -43,7 +43,7 @@ export default function Login() {
           <div id="inputCard">
             <p>
               <Input
-              idClass ="loginEmail"
+                idClass="loginEmail"
                 label="Email"
                 id="email"
                 type="email"

@@ -17,7 +17,7 @@ export default function RegistrationContext({ children }) {
   const [error, setError] = useState({});
 
   function handleLogin(loginObj) {
-    const updated = data.find((item) => {
+    const updated = DUMMY.find((item) => {
       return item.email === loginObj.email;
     });
 

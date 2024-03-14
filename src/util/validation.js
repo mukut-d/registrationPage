@@ -10,6 +10,3 @@ export function isEmail(value) {
     return value.length >= minLength;
   }
   
-  export function isEqualsToOtherValue(value, otherValue) {
-    return value === otherValue;
-  }

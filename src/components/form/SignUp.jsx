@@ -1,19 +1,44 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
+import { hasMinLength, isEmail, isNotEmpty } from "../../util/validation";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
 export default function SignUp() {
   const { onSubmit } = useContext(Context);
-  const [signup, setSignUp] = useState({});
+  const [signup, setSignUp] = useState({
+    firstName: "",
+    lastName: "",
+    email: null,
+    password: "",
+  });
 
   function handleChange(id, value) {
     setSignUp((prev) => {
       return { ...prev, [id]: value };
     });
   }
+
+  console.log(signup);
   function handleSubmit(event) {
+    if (!isNotEmpty(signup.firstName)) {
+      alert("ENTER VALID FIRST NAME!");
+      return;
+    }
+    if (!isNotEmpty(signup.lastName)) {
+      alert("ENTER VALID LAST NAME!");
+      return;
+    }
+    if (!isEmail(signup.email)) {
+      alert("ENTER VALID EMAIL!");
+      return;
+    }
+    if (!isNotEmpty(signup.password) || hasMinLength(signup.password, 6)) {
+      alert("ENTER PROPER PASSWORD!");
+      return;
+    }
+
     event.preventDefault();
     // first validate data here...
 

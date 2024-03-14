@@ -8,16 +8,16 @@ export default function UsersTable() {
     <>
       <section className="">
         <table>
-          <thead>
+          <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Password</th>
-          </thead>
+          </tr>
           <tbody>
-            {data.map((item) => {
+            {DUMMY.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>{item.firstName}</td>
                   <td>{item.lastName}</td>
                   <td>{item.email}</td>

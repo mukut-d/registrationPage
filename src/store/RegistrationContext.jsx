@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
+import { DUMMY } from "../data/data";
 
 export const Context = createContext({
   loggedIn: false,
@@ -19,11 +20,12 @@ export default function RegistrationContext({ children }) {
     const updated = data.find((item) => {
       return item.email === loginObj.email;
     });
+
     if (updated) {
       if (updated.password !== loginObj.password) {
         setError({ err: "pwd", error: true });
       } else {
-        loggedIn(true);
+        ifLogin(true);
       }
     } else {
       setError({ err: "email", error: true });
@@ -37,13 +39,11 @@ export default function RegistrationContext({ children }) {
   function handleSubmit(data) {
     // check if user exists in data set
     setData((prev) => {
-      return [...prev, { ...data }];
+      return [...prev, { id: prev.length, ...data }];
     });
 
     ifLogin(true);
   }
-
-  console.log(data);
 
   function ifLogin(bool) {
     setLoggedIn(bool);

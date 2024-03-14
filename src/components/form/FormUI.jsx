@@ -1,8 +1,9 @@
 import { useState } from "react";
+import Button from "../ui/Button";
 import Login from "./Login";
 import SignUp from "./SignUp";
 
-export default function Form() {
+export default function FormUI() {
   const [isLogin, setIsLogin] = useState(false);
 
   function handleClick(mode) {
@@ -19,13 +20,14 @@ export default function Form() {
           <Login />
           <div id="login">
             <p>Login your account or Create One...</p>
-            <button
+            <Button
               onClick={() => {
                 handleClick();
               }}
+              className=" text-button button"
             >
               Signup
-            </button>
+            </Button>
           </div>
         </>
       )}
@@ -34,7 +36,12 @@ export default function Form() {
           <SignUp />
           <div id="acc">
             <p>Already have an account...</p>
-            <button onClick={() => handleClick("login")}>Login</button>
+            <Button
+              onClick={() => handleClick("login")}
+              className=" text-button button"
+            >
+              Login
+            </Button>
           </div>
         </>
       )}

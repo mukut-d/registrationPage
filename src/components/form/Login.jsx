@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
-import Input from "../Input";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 export default function Login() {
   const { onLogin, error } = useContext(Context);
@@ -14,13 +15,10 @@ export default function Login() {
       return { ...prev, [id]: value };
     });
   }
-  console.log(loginObj);
 
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submitted");
-
-
 
     event.target.reset();
     onLogin(loginObj);
@@ -45,6 +43,7 @@ export default function Login() {
           <div id="inputCard">
             <p>
               <Input
+              idClass ="loginEmail"
                 label="Email"
                 id="email"
                 type="email"
@@ -67,8 +66,10 @@ export default function Login() {
             </p>
 
             <p id="form-actions">
-              <button>Login</button>
-              <button type="reset">Reset</button>
+              <Button className="button">Login</Button>
+              <Button className="button" type="reset">
+                Reset
+              </Button>
             </p>
           </div>
         </section>

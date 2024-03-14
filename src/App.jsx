@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import Form from "./components/form/Form";
-import Header from "./components/Header";
+import FormUI from "./components/form/FormUI";
 import UsersTable from "./components/UsersTable";
 import { Context } from "./store/RegistrationContext";
 
@@ -10,7 +9,7 @@ export default function App() {
   return (
     <>
       <div>
-        {!loggedIn && <Form />}
+        {!loggedIn && <FormUI />}
         {loggedIn && (
           <>
             <UsersTable />

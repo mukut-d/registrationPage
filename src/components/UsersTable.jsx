@@ -15,7 +15,7 @@ export default function UsersTable() {
             <th>Password</th>
           </tr>
           <tbody>
-            {DUMMY.map((item) => {
+            {data.map((item) => {
               return (
                 <tr key={item.id}>
                   <td>{item.firstName}</td>

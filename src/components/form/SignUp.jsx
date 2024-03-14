@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
-import Input from "../Input";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 export default function SignUp() {
   const { onSubmit } = useContext(Context);
@@ -12,7 +13,7 @@ export default function SignUp() {
       return { ...prev, [id]: value };
     });
   }
-  function handleSubmit(event) {  
+  function handleSubmit(event) {
     event.preventDefault();
     // first validate data here...
 
@@ -61,8 +62,12 @@ export default function SignUp() {
               onChange={handleChange}
             />
             <div>
-              <button onClick={handleSubmit}>Signup</button>
-              <button type="reset">Reset</button>
+              <Button onClick={handleSubmit} className="button">
+                Signup
+              </Button>
+              <Button type="reset" className="button">
+                Reset
+              </Button>
             </div>
             <div className="curve"></div>
           </section>

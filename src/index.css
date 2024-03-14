@@ -85,8 +85,6 @@ section {
   height: 85%;
 }
 
-/* Curved bg with SVG via https://www.shapedivider.app/ */
-
 .wave {
   position: absolute;
   top: 0;
@@ -119,4 +117,50 @@ section {
 
 .signup {
   padding-bottom: 12rem;
+}
+
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffc404;
+  border: 1px solid #ffc404;
+  color: #1f1a09;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #ffab04;
+  border-color: #ffab04;
+  color: #1f1a09;
+}
+
+.Input {
+  padding-bottom: 7px;
+}
+
+.Input label {
+  padding-right: 8px;
+}
+
+#email label {
+  padding-right: 3rem;
+}
+
+#password label {
+  padding-right: 1rem;
+}
+
+.text-button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffc404;
+}
+
+
+#loginEmail label{
+  padding-right: 4rem;
 }

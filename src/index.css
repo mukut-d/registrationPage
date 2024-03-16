@@ -160,7 +160,12 @@ section {
   color: #ffc404;
 }
 
-
-#loginEmail label{
+#loginEmail label {
   padding-right: 4rem;
+}
+
+#signUp-actions {
+  padding-top: 2rem;
+  display: flex;
+  gap: 2rem;
 }

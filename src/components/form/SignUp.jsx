@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
 import { hasMinLength, isEmail, isNotEmpty } from "../../util/validation";
 import Button from "../ui/Button";
+import Form from "../ui/Form";
 import Input from "../ui/Input";
 
 export default function SignUp() {
@@ -47,7 +48,7 @@ export default function SignUp() {
   return (
     <>
       <div className="blue">
-        <form
+        <Form
           onSubmit={() => {
             handleSubmit(event);
           }}
@@ -86,7 +87,7 @@ export default function SignUp() {
               required
               onChange={handleChange}
             />
-            <div>
+            <div id="signUp-actions">
               <Button onClick={handleSubmit} className="button">
                 Signup
               </Button>
@@ -96,7 +97,7 @@ export default function SignUp() {
             </div>
             <div className="curve"></div>
           </section>
-        </form>
+        </Form>
       </div>
     </>
   );

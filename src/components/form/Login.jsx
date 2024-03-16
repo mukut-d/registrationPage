@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Context } from "../../store/RegistrationContext";
 import Button from "../ui/Button";
+import Form from "../ui/Form";
 import Input from "../ui/Input";
 
 export default function Login() {
@@ -33,7 +34,7 @@ export default function Login() {
 
   return (
     <>
-      <form
+      <Form
         onSubmit={() => {
           handleSubmit(event);
         }}
@@ -65,7 +66,7 @@ export default function Login() {
               />
             </p>
 
-            <p id="form-actions">
+            <p id="signUp-actions">
               <Button className="button">Login</Button>
               <Button className="button" type="reset">
                 Reset
@@ -88,7 +89,7 @@ export default function Login() {
             </svg>
           </div>
         </section>
-      </form>
+      </Form>
     </>
   );
 }

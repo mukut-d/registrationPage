@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { useState } from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Context } from "../../store/RegistrationContext";
 import Button from "../ui/Button";
 import Form from "../ui/Form";
 import Input from "../ui/Input";
 
 export default function Login() {
-  const { onLogin, error } = useContext(Context);
+  const { onLogin, error, resetError } = useContext(Context);
   const [loginObj, setLoginObj] = useState({});
   let errEmail = false;
   let errPwd = false;
@@ -16,7 +17,7 @@ export default function Login() {
       return { ...prev, [id]: value };
     });
   }
-
+  console.log(loginObj);
   function handleSubmit(event) {
     event.preventDefault();
     console.log("submitted");
@@ -24,7 +25,8 @@ export default function Login() {
     event.target.reset();
     onLogin(loginObj);
   }
-  if (error.err === "emai;") {
+  console.log(error);
+  if (error.err === "email") {
     if (error.error) errEmail = true;
   } else if (error.err === "pwd") {
     if (error.error) {
@@ -42,36 +44,45 @@ export default function Login() {
         <section className="dark">
           <h1>Login !</h1>
           <div id="inputCard">
-            <p>
-              <Input
-                idClass="loginEmail"
-                label="Email"
-                id="email"
-                type="email"
-                name="email"
-                error={errEmail}
-                onChange={handleChange}
-              />
-            </p>
-            <p>
-              <Input
-                error={errPwd}
-                label="Password"
-                id="password"
-                type="password"
-                name="password"
-                minLength={6}
-                required
-                onChange={handleChange}
-              />
-            </p>
+            <Input
+              icon={
+                <FaEnvelope
+                  className="text-xl text-textColor "
+                  style={{ paddingRight: "8px" }}
+                  />
+              }
+              idClass="loginEmail"
+              placeholder="Email Here"
+              id="email"
+              type="email"
+              name="email"
+              error={errEmail}
+              onChange={handleChange}
+            />
 
-            <p id="signUp-actions">
+            <Input
+              error={errPwd}
+              icon={
+                <FaLock
+                  className="text-xl text-textColor"
+                  style={{ paddingRight: "8px" }}
+                />
+              }
+              placeholder="Password Here"
+              id="password"
+              type="password"
+              name="password"
+              minLength={6}
+              required
+              onChange={handleChange}
+            />
+
+            <div id="signUp-actions">
               <Button className="button">Login</Button>
-              <Button className="button" type="reset">
+              <Button className="button" type="reset" onClick={resetError}>
                 Reset
               </Button>
-            </p>
+            </div>
           </div>
         </section>
         <section className="red">

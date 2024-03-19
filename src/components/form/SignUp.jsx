@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useState } from "react";
+import { FaEnvelope, FaLock, FaUser, FaUserSecret } from "react-icons/fa";
 import { Context } from "../../store/RegistrationContext";
 import { hasMinLength, isEmail, isNotEmpty } from "../../util/validation";
 import Button from "../ui/Button";
@@ -57,21 +58,39 @@ export default function SignUp() {
             <h1>Sign Up !</h1>
 
             <Input
-              label="First Name"
+              icon={
+                <FaUser
+                  className="text-xl text-textColor "
+                  style={{ paddingRight: "8px" }}
+                />
+              }
+              placeholder="First Name"
               type="text"
               id="firstName"
               name="firstName"
               onChange={handleChange}
             />
             <Input
-              label="Last Name"
+              icon={
+                <FaUserSecret
+                  className="text-xl text-textColor bg-white"
+                  style={{ paddingRight: "8px" }}
+                />
+              }
+              placeholder="Last Name"
               type="text"
               id="lastName"
               name="lastName"
               onChange={handleChange}
             />
             <Input
-              label="Email"
+              icon={
+                <FaEnvelope
+                  className="text-xl text-textColor "
+                  style={{ paddingRight: "8px" }}
+                />
+              }
+              placeholder="Email Here"
               type="email"
               id="email"
               name="email"
@@ -79,7 +98,13 @@ export default function SignUp() {
               onChange={handleChange}
             />
             <Input
-              label="Password"
+              icon={
+                <FaLock
+                  className="text-xl text-textColor"
+                  style={{ paddingRight: "8px" }}
+                />
+              }
+              placeholder="Password Here"
               type="password"
               id="password"
               name="password"

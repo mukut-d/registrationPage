@@ -9,6 +9,7 @@ export const Context = createContext({
   onSubmit: () => {},
   onLogin: () => {},
   onClose: () => {},
+  resetError:()=>{},
 });
 
 export default function RegistrationContext({ children }) {
@@ -53,6 +54,10 @@ export default function RegistrationContext({ children }) {
     setLoggedIn(!loggedIn);
   }
 
+  function handleResetError(){
+    setError({});
+  }
+
   const ctxValue = {
     error: error,
     loggedIn: loggedIn,
@@ -60,6 +65,7 @@ export default function RegistrationContext({ children }) {
     onSubmit: handleSubmit,
     onLogin: handleLogin,
     onClose: handleClose,
+    resetError: handleResetError,
   };
   return (
     <>

@@ -83,7 +83,7 @@ export default function FormUI() {
               />
 
               <Input
-                error={error.err === "password" ? error : {}}
+                error={error.err === "pwd" ? error : {}}
                 icon={
                   <FaLock
                     className="text-xl text-textColor"

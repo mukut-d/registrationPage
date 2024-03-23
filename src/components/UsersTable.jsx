@@ -9,8 +9,9 @@ export default function UsersTable() {
       <section className="">
         <table>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>ID</th>
+            <th>Name</th>
+
             <th>Email</th>
             <th>Password</th>
           </tr>
@@ -18,8 +19,9 @@ export default function UsersTable() {
             {data.map((item) => {
               return (
                 <tr key={item.id}>
-                  <td>{item.firstName}</td>
-                  <td>{item.lastName}</td>
+                  <td>{item.id}</td>
+                  <td>{item.name}</td>
+
                   <td>{item.email}</td>
                   <td>{item.password}</td>
                 </tr>

@@ -5,7 +5,7 @@ export default function Input({
   icon,
   placeholder,
   id,
-  error = false,
+  error = {},
   onChange,
   ...props
 }) {
@@ -21,13 +21,14 @@ export default function Input({
         <input
           className="w-full h-full bg-transparent text-headingColor text-lg font-semibold border-none outline-none pl-[8px]"
           placeholder={placeholder}
-          style={{ border: error ? "2px solid red" : null }}
+          style={{ border: error.err ? "2px solid red" : null }}
           id={id}
           {...props}
           onChange={() => {
-            onChange(id, event.target.value);
+            onChange(event.target.value);
           }}
         />
+        {error && <p>{error.msg}</p>}
       </div>
     </>
   );

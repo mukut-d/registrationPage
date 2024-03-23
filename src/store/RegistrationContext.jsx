@@ -9,7 +9,7 @@ export const Context = createContext({
   onSubmit: () => {},
   onLogin: () => {},
   onClose: () => {},
-  resetError:()=>{},
+  resetError: () => {},
 });
 
 export default function RegistrationContext({ children }) {
@@ -18,18 +18,19 @@ export default function RegistrationContext({ children }) {
   const [error, setError] = useState({});
 
   function handleLogin(loginObj) {
-    const updated = DUMMY.find((item) => {
+    console.log(loginObj);
+    const updated = data.find((item) => {
       return item.email === loginObj.email;
     });
 
     if (updated) {
       if (updated.password !== loginObj.password) {
-        setError({ err: "pwd", error: true });
+        setError({ err: "pwd", msg: "Enter valid password" });
       } else {
         ifLogin(true);
       }
     } else {
-      setError({ err: "email", error: true });
+      setError({ err: "email", msg: "Enter Valid email" });
     }
 
     if (err.error === false) {
@@ -40,7 +41,7 @@ export default function RegistrationContext({ children }) {
   function handleSubmit(data) {
     // check if user exists in data set
     setData((prev) => {
-      return [...prev, { id: prev.length, ...data }];
+      return [...prev, { id: prev.length + 1, ...data }];
     });
 
     ifLogin(true);
@@ -54,9 +55,10 @@ export default function RegistrationContext({ children }) {
     setLoggedIn(!loggedIn);
   }
 
-  function handleResetError(){
+  function handleResetError() {
     setError({});
   }
+  console.log(data);
 
   const ctxValue = {
     error: error,

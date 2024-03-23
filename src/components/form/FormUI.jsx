@@ -8,7 +8,7 @@ import Button from "../ui/Button";
 import { useState } from "react";
 
 export default function FormUI() {
-  const { onLogin, error, onSubmit } = useContext(Context);
+  const { onLogin, error, onSubmit, resetError } = useContext(Context);
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +55,8 @@ export default function FormUI() {
     //  console.log("clicked");
 
     setIsLogin(!isLogin);
+    reset();
+    resetError();
   }
   console.log(isLogin);
 

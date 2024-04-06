@@ -173,3 +173,12 @@ section {
   display: flex;
   gap: 2rem;
 }
+
+#inputCard {
+  border: 2px solid;
+  padding: 2rem;
+}
+
+#buttonContainer {
+  z-index: 20;
+}

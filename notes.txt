@@ -1,0 +1,67 @@
+
+const formFields = [
+ {
+ name: 'firstName',
+ type: 'text',
+ label: 'First Name',
+ placeholder: 'First Name',
+ icon: iconProfile,
+ required: true,
+ value: data['firstName'],
+ },
+ {
+ name: 'lastName',
+ type: 'text',
+ label: 'Last Name',
+ placeholder: 'Last Name',
+ icon: iconProfile,
+ required: true,
+ value: data['lastName'],
+ },
+ {
+ name: 'companyName',
+ type: 'text',
+ label: 'Business Name',
+ placeholder: 'Business Name',
+ icon: iconWork,
+ required: true,
+ value: data['companyName'],
+ },
+ {
+ name: 'emailAddress',
+ type: 'email',
+ label: 'Email',
+ placeholder: 'Email',
+ icon: iconMail,
+ required: true,
+ value: data['emailAddress'],
+ },
+ {
+ name: 'mobileNumber',
+ type: 'phone',
+ label: 'Mobile Number',
+ placeholder: '+91 99999999',
+ icon: true,
+ required: true,
+ value: data['mobileNumber'],
+ },
+ ];
+
+here is the Dynamic form componet calling
+
+<DynamicForm ref={formRef} fields={formFields} onChange={handleFormDataChange}>
+ <div className="flex w-full">
+ <Button handleSubmit={handleSubmit} value="Submit" />
+ </div>
+ </DynamicForm>
+
+I think a starter can develop this
+
+i don't want to do all validation in each form page
+
+i need to do just check witha finction that isValid()
+
+is it return true
+
+proceed with submit action else false
+

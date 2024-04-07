@@ -14,7 +14,15 @@ export const Context = createContext({
 
 export default function RegistrationContext({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      companyName: "",
+    },
+  ]);
   const [error, setError] = useState({});
 
   function handleLogin(loginObj) {

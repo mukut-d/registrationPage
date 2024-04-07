@@ -1,10 +1,38 @@
-const data = {
-  email: "",
-  password: "",
-  firstName: "",
-  lastName: "",
-  companyName: "",
+import { useContext } from "react";
+import { useState } from "react";
+import { FaBuilding, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+import { data } from "../../data/data";
+import { Context } from "../../store/RegistrationContext";
+import Button from "./Button";
+import DynamicForm from "./DynamicForm";
+
+const Form = () => {
+  const { data } = useContext(Context);
+ // const [input, setInput] = useState("");
+  const handleSubmit = () => {};
+  const handleFormDataChange = (value) => {
+  //  console.log("input value-", value);
+   // setInput();
+  };
+  return (
+    <>
+      <section className="">
+        <DynamicForm
+          title={"Sign Up!"}
+          fields={formFields}
+          onChange={handleFormDataChange}
+        >
+          <div id="buttonContainer">
+            <Button onClick={handleSubmit} className="button">
+              Submit
+            </Button>
+          </div>
+        </DynamicForm>
+      </section>
+    </>
+  );
 };
+
 const formFields = [
   {
     name: "email",
@@ -77,44 +105,5 @@ const formFields = [
     value: data["companyName"],
   },
 ];
-
-import { useState } from "react";
-import { FaBuilding, FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-import Button from "./Button";
-import DynamicForm from "./DynamicForm";
-
-{
-  /* <DynamicForm ref={formRef} fields={formFields} onChange={handleFormDataChange}>
-  <div className="flex w-full">
-    <Button handleSubmit={handleSubmit} value="Submit" />
-  </div>
-</DynamicForm>; */
-}
-
-const Form = () => {
-  const [input, setInput] = useState('');
-  const handleSubmit = () => {};
-  const handleFormDataChange = (value) => {
-    console.log("input value-", value);
-    setInput()
-  };
-  return (
-    <>
-      <section className="">
-        <DynamicForm
-          title={"Sign Up!"}
-          fields={formFields}
-          onChange={handleFormDataChange}
-        >
-          <div id="buttonContainer">
-            <Button onClick={handleSubmit} className="button">
-              Submit
-            </Button>
-          </div>
-        </DynamicForm>
-      </section>
-    </>
-  );
-};
 
 export default Form;

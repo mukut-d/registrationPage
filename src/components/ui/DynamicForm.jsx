@@ -16,6 +16,7 @@ const DynamicForm = ({ title, onChange, fields, children }) => {
               type={item.type}
               value={item.value}
               onChange={onChange}
+              required={item.required}
             />
           ))}
         </div>
